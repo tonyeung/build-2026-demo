@@ -1,0 +1,64 @@
+{
+  "name": "BUILD 2026 Demo",
+  "image": "mcr.microsoft.com/devcontainers/universal:6-noble",
+
+  // universal:6-noble already includes Node, Python, Java, Go, .NET, Ruby, PHP,
+  // C++, plus version managers (nvm, rvm, rbenv, SDKMAN). Don't re-add those as
+  // features — duplication slows the build.
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "upgradePackages": false
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/copilot-cli:1": {},
+    "ghcr.io/devcontainers/features/git-lfs:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  // Ensure .devcontainer/.env exists before the container starts (so --env-file
+  // doesn't fail). Runs on the host before any container work — also runs in
+  // Codespaces VM before container creation.
+  "initializeCommand": ["bash", "-c", "test -f .devcontainer/.env || cp .devcontainer/.env.example .devcontainer/.env"],
+
+  // Heavy installs go in onCreateCommand so Codespaces prebuilds capture them.
+  // postCreateCommand runs AFTER the prebuild snapshot — anything there re-runs
+  // on every codespace start and defeats the point of the prebuild.
+  "onCreateCommand": "bash .devcontainer/setup.sh",
+
+  // Local Docker: --env-file reads .devcontainer/.env (gitignored). Presenter
+  // edits this file with their fine-grained PAT.
+  "runArgs": ["--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
+
+  // Codespaces: prompts the user to configure GITHUB_TOKEN as a Codespaces
+  // secret. When set, Codespaces injects it as a container env var at start
+  // (which overrides the empty value loaded from .env). Ignored locally.
+  "secrets": {
+    "GITHUB_TOKEN": {
+      "description": "GitHub fine-grained PAT with Models:Read for Path B (GitHub Models direct REST)"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github",
+        "GitHub.vscode-github-actions",
+        "github.vscode-codeql",
+        "ms-azuretools.vscode-docker"
+      ],
+      "mcp": {
+        "servers": {
+          "github": {
+            "type": "http",
+            "url": "https://api.githubcopilot.com/mcp/",
+            "headers": {
+              "X-MCP-Tools": "default,copilot_spaces"
+            }
+          }
+        }
+      }
+    }
+  }
+}

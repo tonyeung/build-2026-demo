@@ -1,0 +1,15 @@
+# Secrets — never commit
+.env
+.env.local
+*.pem
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+__pycache__/
+*.pyc
+node_modules/
+dist/
+build/

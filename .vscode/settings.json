@@ -1,0 +1,30 @@
+{
+  "telemetry.telemetryLevel": "off",
+
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.fontSize": 14,
+
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/__pycache__/**": true,
+    "**/.venv/**": true,
+    "**/.pytest_cache/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.next/**": true
+  },
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/__pycache__": true,
+    "**/.venv": true,
+    "**/dist": true,
+    "**/build": true
+  },
+
+  "editor.minimap.enabled": false,
+  "workbench.tips.enabled": false,
+  "update.showReleaseNotes": false
+}

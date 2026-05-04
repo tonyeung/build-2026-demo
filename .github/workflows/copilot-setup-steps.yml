@@ -1,0 +1,35 @@
+# Setup steps that the GitHub Copilot coding agent runs in its sandbox before
+# starting work. The job MUST be named `copilot-setup-steps` or it won't be
+# picked up. The file MUST be on the default branch to take effect.
+#
+# When this file is absent, the coding agent falls back to .devcontainer/.
+
+name: "Copilot Setup Steps"
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Copilot SDKs (Path A)
+        run: |
+          npm install -g @github/copilot-sdk
+          pip install github-copilot-sdk

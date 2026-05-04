@@ -1,0 +1,15 @@
+{
+  "id": "fixture-offline-demo",
+  "model": "openai/gpt-4.1",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "1. Take a slow breath and acknowledge it briefly. 2. Switch to the recorded fallback at scripts/play-fallback.sh. 3. Move to the next demo step — never debug live on stage."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {"prompt_tokens": 18, "completion_tokens": 47, "total_tokens": 65}
+}
