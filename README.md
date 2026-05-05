@@ -6,8 +6,17 @@ identical behavior on all three.
 
 ## Prerequisites
 
-Your company-issued laptop image almost certainly already has these. Verify
-before installing — duplicates can cause version conflicts.
+**Windows users**: Run this first in PowerShell as Administrator:
+
+```powershell
+.\run-first-windows.ps1
+```
+
+This script automates the entire Windows prerequisite setup: WSL2 enablement, Docker Desktop installation and startup, Git, and GitHub CLI. It handles retries for Windows features and Docker daemon readiness. If a restart is required, the script will tell you — restart and run it again.
+
+---
+
+Your company-issued laptop image almost certainly already has these.
 
 You need three components on the host machine:
 
@@ -17,11 +26,9 @@ You need three components on the host machine:
 - **A container runtime**:
   - **macOS**: Docker Desktop. Verify with `docker --version` in Terminal. If
     missing: https://www.docker.com/products/docker-desktop/
-  - **Windows**: WSL2 + Docker Desktop with the WSL2 backend enabled. Verify
-    with `wsl --status` and `docker --version` in PowerShell. If WSL2 is
-    missing: `wsl --install` in PowerShell as admin
-    (https://learn.microsoft.com/windows/wsl/install). If Docker is missing:
-    same Docker Desktop link as macOS.
+  - **Windows**: WSL2 + Docker Desktop with the WSL2 backend enabled. 
+    Verify with `wsl --status` and `docker --version` in PowerShell. 
+    (The script above handles this automatically.)
 
 **Zero-install path**: skip all of the above and use GitHub Codespaces from a
 browser. Only needs a GitHub account with Codespaces access.
@@ -72,6 +79,7 @@ scripts/
   verify-manual.md       # human-only checks (VS Code, MCP, Path A)
   doctor.sh              # day-of pre-stage health check
   reset-demo.sh          # restore tracked files between demos
+run-first-windows.ps1    # Windows setup automation: WSL2, Docker Desktop, Git, GitHub CLI
 .gitignore               # ignores .env and other local-only files
 .gitattributes           # line-ending normalization (Windows safety)
 AGENTS.md                # custom agent definitions (Plan Mode)
