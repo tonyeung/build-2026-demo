@@ -4,6 +4,22 @@ Drop-in devcontainer + repo scaffold for BUILD 2026 demo presenters. Designed
 for **Windows + macOS local Docker Desktop** and **GitHub Codespaces** with
 identical behavior on all three.
 
+## What's Already In The Devcontainer
+
+This starter is meant to answer the first demo question quickly: "does it
+already have the stack I need?" The container includes these runtimes and demo
+tooling out of the box:
+
+- **Languages / runtimes**: Node.js, Python, Go, .NET, Java, Ruby, PHP, and C/C++
+- **Package / version managers**: npm, pip, SDKMAN, nvm, rvm, and rbenv
+- **GitHub demo tooling**: GitHub CLI, Copilot CLI, `@github/copilot-sdk` (npm), `github-copilot-sdk` (pip), and the `gh-codeql` extension
+- **Container / repo tooling**: Docker-in-Docker, Git LFS, and VS Code Dev Containers support
+- **VS Code extensions preconfigured in-container**: GitHub Copilot, Copilot Chat, GitHub Pull Requests, GitHub Actions, CodeQL, and Docker
+
+If your demo depends on one of those stacks, you should be able to open the repo
+in the container and start from a working baseline instead of provisioning tools
+live on stage.
+
 ## Prerequisites
 
 **Windows users**: Run this first in PowerShell as Administrator:
@@ -12,7 +28,7 @@ identical behavior on all three.
 .\run-first-windows.ps1
 ```
 
-This script automates the entire Windows prerequisite setup: WSL2 enablement, Docker Desktop installation and startup, Git, and GitHub CLI. It handles retries for Windows features and Docker daemon readiness. If a restart is required, the script will tell you — restart and run it again.
+This script automates the entire Windows prerequisite setup: WSL2 enablement, Docker Desktop installation and startup, Git, GitHub CLI, VS Code, and the Dev Containers extension. It handles retries for Windows features and Docker daemon readiness. If a restart is required, the script will tell you — restart and run it again.
 
 ---
 
@@ -79,7 +95,7 @@ scripts/
   verify-manual.md       # human-only checks (VS Code, MCP, Path A)
   doctor.sh              # day-of pre-stage health check
   reset-demo.sh          # restore tracked files between demos
-run-first-windows.ps1    # Windows setup automation: WSL2, Docker Desktop, Git, GitHub CLI
+run-first-windows.ps1    # Windows setup automation: WSL2, Docker Desktop, Git, GitHub CLI, VS Code
 .gitignore               # ignores .env and other local-only files
 .gitattributes           # line-ending normalization (Windows safety)
 AGENTS.md                # custom agent definitions (Plan Mode)
