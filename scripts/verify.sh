@@ -41,7 +41,7 @@ if pip3 show github-copilot-sdk >/dev/null 2>&1; then
 else
   err "github-copilot-sdk (pip)" "not installed"
 fi
-if gh extension list 2>/dev/null | grep -q gh-codeql; then
+if [ -d ~/.local/share/gh/extensions/gh-codeql ]; then
   pass "gh-codeql extension"
 else
   err "gh-codeql extension" "(run: gh extension install github/gh-codeql)"
