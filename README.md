@@ -30,6 +30,14 @@ live on stage.
 
 This script automates the entire Windows prerequisite setup: WSL2 enablement, Docker Desktop installation and startup, Git, GitHub CLI, VS Code, and the Dev Containers extension. It handles retries for Windows features and Docker daemon readiness. If a restart is required, the script will tell you — restart and run it again.
 
+**macOS users**: Run this first in Terminal:
+
+```bash
+bash run-first-mac.sh
+```
+
+This script automates the entire macOS prerequisite setup: Homebrew, Docker Desktop installation and startup, Git, GitHub CLI, VS Code, and the Dev Containers extension. It handles retries for Docker daemon readiness.
+
 ---
 
 Your company-issued laptop image almost certainly already has these.
@@ -96,6 +104,7 @@ scripts/
   doctor.sh              # day-of pre-stage health check
   reset-demo.sh          # restore tracked files between demos
 run-first-windows.ps1    # Windows setup automation: WSL2, Docker Desktop, Git, GitHub CLI, VS Code
+run-first-mac.sh         # macOS setup automation: Homebrew, Docker Desktop, Git, GitHub CLI, VS Code
 .gitignore               # ignores .env and other local-only files
 .gitattributes           # line-ending normalization (Windows safety)
 AGENTS.md                # custom agent definitions (Plan Mode)
