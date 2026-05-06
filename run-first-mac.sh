@@ -46,11 +46,17 @@ fi
 
 # ── Dev Containers extension ──────────────────────────────────────────────────
 step "Checking Dev Containers extension"
+# If `code` isn't on PATH but VS Code is installed, add the CLI shim to PATH
+if ! command_exists code && [[ -f "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" ]]; then
+    export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+    echo "Added VS Code CLI to PATH for this session."
+fi
+
 if command_exists code; then
     code --install-extension ms-vscode-remote.remote-containers
     echo "Dev Containers extension installed/ensured."
 else
-    echo "WARNING: VS Code not on PATH yet; install the Dev Containers extension manually."
+    echo "WARNING: VS Code not on PATH; install the Dev Containers extension manually."
 fi
 
 # ── Docker Desktop ────────────────────────────────────────────────────────────
