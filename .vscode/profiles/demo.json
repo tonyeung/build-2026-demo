@@ -1,0 +1,46 @@
+{
+  "name": "Demo",
+  "settings": {
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.fontSize": 14,
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**": true,
+      "**/__pycache__/**": true,
+      "**/.venv/**": true,
+      "**/__pytest_cache/**": true,
+      "**/dist/**": true,
+      "**/build/**": true,
+      "**/.next/**": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/__pycache__": true,
+      "**/.venv": true,
+      "**/dist": true,
+      "**/build": true
+    },
+    "editor.minimap.enabled": false,
+    "workbench.tips.enabled": false,
+    "update.showReleaseNotes": false,
+    "editor.fontSize": 16,
+    "editor.fontFamily": "'Courier New', monospace",
+    "editor.lineHeight": 1.6,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 88,
+    "editor.lineNumbers": "off",
+    "editor.renderLineHighlight": "none",
+    "editor.rulers": [],
+    "editor.bracketPairColorization.enabled": false,
+    "editor.guides.bracketPairs": "active",
+    "editor.smoothScrolling": true,
+    "workbench.colorTheme": "GitHub Light",
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false,
+    "workbench.editor.enablePreview": false,
+    "copilot.enable": true,
+    "github.copilot.chat.welcomeNotifications": false
+  }
+}
