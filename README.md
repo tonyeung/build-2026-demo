@@ -117,7 +117,8 @@ AGENTS.md                # custom agent definitions (Plan Mode)
 ## VS Code profiles: dev & demo modes
 
 This repo includes two VS Code **profiles** that users switch between: one optimized for
-development work, one for live presentations and recordings.
+development work, one for live presentations and recordings. This eliminates confusion about
+why certain settings differ from standard VS Code when working on the demo itself.
 
 ### Setup (one-time)
 
@@ -142,18 +143,39 @@ Profiles: Open Profile
 Pick **Demo** before presenting, **Default** for development. Settings, colors, and font sizes
 switch instantly.
 
-**Demo profile settings:**
-- **Font**: 16px Courier New (readable on projection screens)
-- **Theme**: GitHub Light (high-contrast, records cleanly)
-- **UI**: Hidden activity bar & status bar (less stage clutter)
-- **Editor**: No line numbers, no bracket colorization, bounded 88-column word wrap
-- **Playback**: Smooth scrolling, no preview tabs, bracket pair guides only
+### Demo profile settings
 
-**Default profile settings:**
-- **Font**: Standard size for comfortable development
+Optimized for on-stage visibility, recordings, and minimal distraction:
+
+**Visual consistency:**
+- **Editor font**: 16px Courier New (readable on projection screens and video)
+- **Theme**: GitHub Light (high-contrast, records cleanly)
+- **Line height**: 1.6 (breathing room for audience readability)
+- **Word wrap**: 88 columns (Python PEP 8 alignment; prevents horizontal scrolling surprises)
+
+**Distraction reduction** (less clutter on stage):
+- **Hidden activity bar** — use Cmd/Ctrl+Shift+P for navigation instead
+- **Hidden status bar** — suppresses environment info that might confuse audiences
+- **No line numbers** — cleaner code view
+- **No bracket colorization** — reduces syntax highlighting complexity for video encoding
+
+**Recording optimization:**
+- **Bracket pair guides active** (subtle hints without color)
+- **Smooth scrolling enabled** (smoother video playback)
+- **Preview tabs disabled** (no tab flickering during file opens)
+
+**Extension defaults:**
+- **Copilot Chat welcome notifications off** — no interruptions mid-demo
+- **Copilot enable**: explicitly `true`
+
+### Default profile settings
+
+Optimized for productive development:
+
+- **Font**: Standard size for comfortable long-term development
 - **Theme**: Dark Modern (less eye strain during long work sessions)
 - **UI**: Activity bar and status bar visible (full IDE functionality)
-- **Editor**: Line numbers on, bracket colorization on, unwrapped lines
+- **Editor**: Line numbers on, bracket colorization on, unwrapped lines, standard features enabled
 
 ## Two demo paths supported
 
