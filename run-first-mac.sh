@@ -37,7 +37,8 @@ fi
 
 # ── VS Code ───────────────────────────────────────────────────────────────────
 step "Checking VS Code"
-if ! command_exists code; then
+# Check both the CLI command and the .app bundle (CLI may not be on PATH yet)
+if ! command_exists code && [[ ! -d "/Applications/Visual Studio Code.app" ]]; then
     brew install --cask visual-studio-code
 else
     echo "VS Code already installed."
