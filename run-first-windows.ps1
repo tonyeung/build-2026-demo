@@ -191,4 +191,4 @@ if ($needsRestart) {
     Write-Host "`nSetup completed. If Docker commands fail, sign out/in or restart once." -ForegroundColor Green
 }
 
-Write-Host "`nIMPORTANT: If VS Code is open, reload the window (Ctrl+Shift+P > Reload Window) to pick up Git/GitHub CLI in PATH." -ForegroundColor Yellow
+Write-Host "`nIMPORTANT: If VS Code is open, fully restart it to pick up Git/GitHub CLI in PATH." -ForegroundColor Yellow

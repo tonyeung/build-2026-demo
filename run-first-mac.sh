@@ -95,4 +95,4 @@ fi
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo -e "\nSetup complete."
-echo "IMPORTANT: If VS Code is already open, reload the window (Cmd+Shift+P > Reload Window) to pick up any new PATH entries."
+echo "IMPORTANT: If VS Code is already open, fully restart it to pick up Git/GitHub CLI and the code CLI in PATH."
