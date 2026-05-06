@@ -93,7 +93,8 @@ user or repo secret instead (Settings → Codespaces → Codespaces secrets) —
     codeql.yml                 # GHAS / Autofix demos
     copilot-setup-steps.yml    # coding agent sandbox setup
 .vscode/
-  settings.json          # watcher excludes, scrollback bump, telemetry off
+  settings.json          # demo-consistent UI/UX: font size 16, GitHub Light theme,
+                         # hidden activity bar, no line numbers, no distractions
 examples/
   models_api.py          # Path B: GitHub Models direct REST (with offline mode)
   models_api_fixture.json # canned response for MODELS_OFFLINE=1
@@ -109,6 +110,33 @@ run-first-mac.sh         # macOS setup automation: Homebrew, Docker Desktop, Git
 .gitattributes           # line-ending normalization (Windows safety)
 AGENTS.md                # custom agent definitions (Plan Mode)
 ```
+
+## VS Code defaults for demo consistency
+
+The `.vscode/settings.json` is pre-configured so all demos look identical across presenters' laptops, recordings, and Codespaces:
+
+**Visual consistency:**
+- **Editor font**: 16px Courier New (readable on projection screens and video)
+- **Theme**: GitHub Light (high-contrast, records cleanly)
+- **Line height**: 1.6 (breathing room for audience readability)
+- **Word wrap**: 88 columns (Python PEP 8 alignment; prevents horizontal scrolling surprises)
+
+**Distraction reduction** (less clutter on stage):
+- **Hidden activity bar** — use Cmd/Ctrl+Shift+P for navigation instead
+- **Hidden status bar** — suppresses environment info that might confuse audiences
+- **No line numbers** — cleaner code view; easily toggled per-demo if needed
+- **No bracket colorization** — reduces syntax highlighting complexity for video encoding
+
+**Recording optimization:**
+- **Bracket pair guides active** (subtle hints without color)
+- **Smooth scrolling enabled** (smoother video playback)
+- **Preview tabs disabled** (no tab flickering during file opens)
+
+**Extension defaults:**
+- **Copilot Chat welcome notifications off** — no interruptions mid-demo
+- **Copilot enable**: explicitly `true`
+
+If you need to override any of these for a specific demo, use VS Code's local override mechanism (Workspace settings override User settings) or edit `.vscode/settings.json` before that recording session.
 
 ## Two demo paths supported
 
