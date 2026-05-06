@@ -93,12 +93,16 @@ user or repo secret instead (Settings → Codespaces → Codespaces secrets) —
     codeql.yml                 # GHAS / Autofix demos
     copilot-setup-steps.yml    # coding agent sandbox setup
 .vscode/
-  settings.json          # watcher excludes, scrollback bump, telemetry off
+  settings.json          # dev defaults (line numbers on, activity bar visible)
+  profiles/
+    demo.json            # profile config for live presentations and recordings
+    default.json         # profile config for development work
 examples/
   models_api.py          # Path B: GitHub Models direct REST (with offline mode)
   models_api_fixture.json # canned response for MODELS_OFFLINE=1
   copilot_sdk.py         # Path A: Copilot CLI SDK via JSON-RPC
 scripts/
+  setup-vscode-profiles.sh # initialize VS Code profiles (Demo and Default)
   verify.sh              # tooling smoke test (post-build)
   verify-manual.md       # human-only checks (VS Code, MCP, Path A)
   doctor.sh              # day-of pre-stage health check
@@ -109,6 +113,69 @@ run-first-mac.sh         # macOS setup automation: Homebrew, Docker Desktop, Git
 .gitattributes           # line-ending normalization (Windows safety)
 AGENTS.md                # custom agent definitions (Plan Mode)
 ```
+
+## VS Code profiles: dev & demo modes
+
+This repo includes two VS Code **profiles** that users switch between: one optimized for
+development work, one for live presentations and recordings. This eliminates confusion about
+why certain settings differ from standard VS Code when working on the demo itself.
+
+### Setup (one-time)
+
+From inside the dev container, run:
+
+```bash
+bash scripts/setup-vscode-profiles.sh
+```
+
+This creates two profiles in your local VS Code:
+- **Demo** — optimized for projection screens and clean recordings
+- **Default** — optimized for development work (line numbers on, activity bar visible)
+
+### Switching profiles
+
+From VS Code, open the Command Palette and run:
+
+```
+Profiles: Open Profile
+```
+
+Pick **Demo** before presenting, **Default** for development. Settings, colors, and font sizes
+switch instantly.
+
+### Demo profile settings
+
+Optimized for on-stage visibility, recordings, and minimal distraction:
+
+**Visual consistency:**
+- **Editor font**: 16px Courier New (readable on projection screens and video)
+- **Theme**: GitHub Light (high-contrast, records cleanly)
+- **Line height**: 1.6 (breathing room for audience readability)
+- **Word wrap**: 88 columns (Python PEP 8 alignment; prevents horizontal scrolling surprises)
+
+**Distraction reduction** (less clutter on stage):
+- **Hidden activity bar** — use Cmd/Ctrl+Shift+P for navigation instead
+- **Hidden status bar** — suppresses environment info that might confuse audiences
+- **No line numbers** — cleaner code view
+- **No bracket colorization** — reduces syntax highlighting complexity for video encoding
+
+**Recording optimization:**
+- **Bracket pair guides active** (subtle hints without color)
+- **Smooth scrolling enabled** (smoother video playback)
+- **Preview tabs disabled** (no tab flickering during file opens)
+
+**Extension defaults:**
+- **Copilot Chat welcome notifications off** — no interruptions mid-demo
+- **Copilot enable**: explicitly `true`
+
+### Default profile settings
+
+Optimized for productive development:
+
+- **Font**: Standard size for comfortable long-term development
+- **Theme**: Dark Modern (less eye strain during long work sessions)
+- **UI**: Activity bar and status bar visible (full IDE functionality)
+- **Editor**: Line numbers on, bracket colorization on, unwrapped lines, standard features enabled
 
 ## Two demo paths supported
 

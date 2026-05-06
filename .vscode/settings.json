@@ -2,7 +2,7 @@
   "telemetry.telemetryLevel": "off",
 
   "terminal.integrated.scrollback": 10000,
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 13,
 
   "files.watcherExclude": {
     "**/.git/objects/**": true,
