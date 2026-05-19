@@ -132,14 +132,10 @@ $ready = $false
 $timeout = 120
 $elapsed = 0
 while ($elapsed -lt $timeout) {
-    try {
-        $info = docker info 2>&1
-        if ($info -and -not ($info | Select-String "error" -Quiet)) {
-            $ready = $true
-            break
-        }
-    } catch {
-        # Docker not ready yet
+    docker info 2>&1 | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        $ready = $true
+        break
     }
     Start-Sleep -Seconds 5
     $elapsed += 5
@@ -149,7 +145,21 @@ if ($ready) {
     Write-Host "Docker daemon is ready." -ForegroundColor Green
     docker version --format "Server: {{.Server.Version}}"
 } else {
-    Write-Warning "Docker daemon not ready after 2 minutes. Start Docker Desktop manually and try 'docker info'."
+    Write-Warning @"
+Docker daemon not ready after 2 minutes. This usually means one of:
+
+  1. First-run wizard not completed
+     -> Open Docker Desktop from the Start menu, accept the EULA,
+        and wait for the whale icon to stop animating.
+
+  2. WSL2 backend not provisioned (Windows features were just enabled)
+     -> Restart Windows.
+
+  3. Your user is not yet in the 'docker-users' group
+     -> Sign out of Windows and sign back in.
+
+After resolving, rerun this script in an elevated PowerShell.
+"@
 }
 
 Write-Step "Checking Git for Windows installation"
