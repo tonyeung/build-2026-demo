@@ -22,7 +22,7 @@ live on stage.
 
 ## Prerequisites
 
-**Windows users**: Run this first in PowerShell as Administrator:
+**Windows users**: Run this first in PowerShell as Administrator (sudo not supported):
 
 ```powershell
 .\run-first-windows.ps1
